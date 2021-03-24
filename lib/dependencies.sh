@@ -222,7 +222,7 @@ npm_node_modules() {
 
     if [[ "$(should_use_npm_ci "$build_dir")" == "true" ]] && [[ "$USE_NPM_INSTALL" != "true" ]]; then
       meta_set "use-npm-ci" "true"
-      echo "Installing node modules"
+      echo "Installing node modules using --production=\"$production\""
       monitor "npm-install" npm ci --production="$production" --unsafe-perm --userconfig "$build_dir/.npmrc" 2>&1
     else
       meta_set "use-npm-ci" "false"
